@@ -2,6 +2,10 @@
 
 <% @books.each do |book| %>
 
-<div>
-  
-</div>
+<p>本のタイトル</p>
+<span><%= link_to book.book_name, book_path(book.id) %></span>
+
+<P>感想</P>
+<span><%= @book.caption %></span>
+
+<% end %>
