@@ -1,4 +1,11 @@
 <h1>Book details</h1>
 
+<% @book.each do |book| %>
+
 <p><%= @book.book_name %></p>
 <p><%= @book.caption %></p>
+
+<%= link_to"Edit", edit_book_path %>
+<%= link_to"Destroy", book_path, method: :delete %>
+
+<% end %>
