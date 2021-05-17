@@ -1,9 +1,12 @@
 <h1>User info</h1>
   <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
   <h3>name</h3>
-  <p><%= @user.name %></p>
+  <%= current_user.name %>
   <h3>introduction</h3>
-  
+
+  <%= link_to "create", edit_user_path(@user) %>
+
+
 <h2>New book</h2>
   <%= form_with model: @book, url:'/books', local:true do |f| %>
   <h4>本のタイトル</h4>
@@ -14,14 +17,20 @@
 <% end %>
 
 
+
 <h1>Books</h1>
 
 <% @books.each do |book| %>
 
+<%= link_to user_path(book.user.id) do %>
+  <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size:'50x50' %>
+<% end %>
+
 <p>本のタイトル</p>
-<span><%= link_to book.book_name, book_path(book.id) %></span>
+<span><%= link_to book.title, book_path(book.id) %></span>
 
 <P>感想</P>
-<span><%= @book.caption %></span>
+<span><%= book.body %></span>
+
 
 <% end %>

@@ -1,0 +1,16 @@
+<h1>Books</h1>
+
+<div>
+  <% @books.each do |book| %>
+  <%= link_to user_path(@user) do %>  
+  <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size:'50x50' %>
+ 
+  <% end %>
+  <h6>本のタイトル</h6>
+  <p><%= link_to(book_path(book)) do %>
+        	  <%= book.title %><% end %></p>
+  <h6>感想</h6>
+  <p><%= book.body %></p>
+  <% end %>
+  
+</div>

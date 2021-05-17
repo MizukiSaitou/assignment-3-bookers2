@@ -1,0 +1,13 @@
+<h1>Users</h1>
+
+<% @users.each do |user| %>
+
+<h2>画像</h2>
+<span><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size:'50x50' %></span>
+
+<h2>名前</h2>
+<span><%= user.name %></span>
+
+<%= link_to"Show", user_path(user.id) %>
+
+<% end %>
