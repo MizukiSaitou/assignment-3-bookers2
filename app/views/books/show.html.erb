@@ -1,4 +1,9 @@
+<%= render 'books/book', user: @user, book: @book_new %>
+
 <h1>Book details</h1>
+
+<%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size:'50x50' %>
+
 
 <p><%= link_to @book.title, book_path %></p>
 <p><%= @book.body %></p>
