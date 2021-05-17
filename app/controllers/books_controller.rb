@@ -4,6 +4,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     @book.save
+    flash[:notice]=""
     redirect_to book_path(@book)
   end
 
@@ -30,15 +31,15 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book=Book.find(params[:id])
-    @book.destroy
+    book=Book.find(params[:id])
+    book.destroy
     redirect_to books_path
   end
 
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.permit(:title, :body)
   end
 
 end

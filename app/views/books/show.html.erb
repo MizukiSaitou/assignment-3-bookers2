@@ -1,12 +1,43 @@
-<%= render 'books/book', user: @user, book: @book_new %>
-
-<h1>Book details</h1>
-
-<%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size:'50x50' %>
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
 
 
-<p><%= link_to @book.title, book_path %></p>
-<p><%= @book.body %></p>
+<div class="container px-5 px-sm-0">
+<div class="row">
+  <div class="col-md-3">
+  <%= render 'books/book', user: @user, book: @book_new %>
+</div>
 
-<%= link_to"Edit", edit_book_path %>
-<%= link_to"Destroy", book_path, method: :delete %>
+<div class="col-md-8 offset-md-1">
+<h2>Book details</h2>
+<table class = "tabel">
+    <tbody>
+      <tr>
+         <td>
+          <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size:'50x50' %><br><%= @user.name %>
+         </td>
+         <td>
+          <%= link_to @book.title, book_path %>
+         </td>
+         <td>
+          <%= @book.body %>
+         </td>
+         <td>
+          <%= link_to"Edit", edit_book_path, class:"btn btn-sm btn-success edit_book" %>
+         </td>
+         <td>
+          <%= link_to"Destroy", book_path(@book), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-sm btn-danger destroy_book" %>
+          </td>
+      </tr>
+    </tbody>
+
+</table>
+
+</div>
+</div>
+</div>
+
+
+
+
