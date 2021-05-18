@@ -1,16 +1,39 @@
+<div class="container">
+<div class="row">
+<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 <h1>User info</h1>
-<%= form_with model:@user, local:true do |f| %>
 
-<label for = "userName">名前</label>
-<%= f.text_field :name, autofocus: true, id:"userName"%>
-
-<h4>画像</h4>
-<label for="inputImage">ProfileImage</label>
- <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' %>
-
-<label for = "userBody">自己紹介</label>
-<%= f.text_field :introduction, autofocus: true, id:"userBody" %>
-
-<%= f.submit"Update User" %>
+<% if @user.errors.any? %>
+<%= pluralize(@user.errors.count, "error") %>
+           prohibited this obj from being saved:
+<% @user.errors.full_messages.each do |message| %>
+<%= message %>
+<% end %>
 
 <% end %>
+
+<%= form_with model:@user, local:true do |f| %>
+<div class="form-group">
+<label for = "userName">名前</label>
+<%= f.text_field :name, autofocus: true, id:"userName"%>
+</div>
+
+<div class="form-group">
+<label for="inputImage">画像</label>
+ <%= f.attachment_field :profile_image %>
+ <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' %>
+ </div>
+
+<div class="form-group">
+<label for = "userBody">自己紹介</label>
+<%= f.text_field :introduction, autofocus: true, id:"userBody" %>
+</div>
+
+<div class="form-group">
+<%= f.submit"Update User" %>
+</div>
+
+<% end %>
+</div>
+</div>
+</div>
