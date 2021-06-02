@@ -37,8 +37,8 @@
               ♡<%= @book.favorites.count %>
             <% end %>
           </td>
-          <td>コメント数：<%= @book.book_comments.count %><td>
         <% end %>
+        <td>コメント数：<%= @book.book_comments.count %><td>
          <% if user_signed_in? && current_user.id == @book.user_id %>
          <td>
           <%= link_to"Edit", edit_book_path, class:"btn btn-sm btn-success edit_book" %>
