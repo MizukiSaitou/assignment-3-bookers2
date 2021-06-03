@@ -12,6 +12,9 @@ end
    get 'followings' => 'relationships#followings', as: 'followings'
    get 'followers' => 'relationships#followers', as: 'followers'
  end
+
+ get '/search' => 'search#search'
+
  end
 
 
