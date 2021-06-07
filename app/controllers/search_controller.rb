@@ -17,6 +17,14 @@ class SearchController < ApplicationController
       Book.where(title: value)
     end
   end
+  
+  def forward(model, value)
+    if model == 'user'
+      User.where("name LIKE ?", "#{value}%")
+    elsif model == 'book'
+      Book.where("title LIKE ?", "#{value}%")
+    end
+  end
 
   def backward(model, value)
     if model == 'user'
