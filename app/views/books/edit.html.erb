@@ -27,6 +27,11 @@
 <%= f.text_field :body, autofocus: true, id:"bookBody" %>
 </div>
 
+<div class="form-group">
+<label for = "bookCategory">分類</label>
+<%= f.text_field :category, autofocus: true, id:"bookCategory" %>
+</div>
+
   <script>
     $('#star-rate-<%= @book.id %>').raty({
       size: 20,

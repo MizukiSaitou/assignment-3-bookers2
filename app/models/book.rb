@@ -10,13 +10,15 @@ class Book < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200 }
-  
+
   validates :rate, presence: true
   validates :rate, numericality: {
-    
-    less_than_or_equal_to: 3,
+
+    less_than_or_equal_to: 5,
     greater_than_or_equal_to: 1,
   }
-  
-  
+
+  scope :latest, -> {order(created_at: :desc)}
+  scope :rate, -> {order(rate: :desc)}
+
 end

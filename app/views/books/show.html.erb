@@ -25,6 +25,9 @@
          <td>
           <%= @book.body %>
          </td>
+         <td>
+          <%= @book.category %>
+         </td>
 
          <td id="favorite_<%= @book.id %>">
           <%= render 'favorites/favorite', book: @book %>
